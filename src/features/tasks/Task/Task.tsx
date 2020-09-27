@@ -26,6 +26,7 @@ export const Task: React.FC<TaskPropsType> = ({ task }) => {
 
   const descToggleBtn = task.description ? (
     <div
+      data-testid="toggle button"
       className={styles.descToggleBtn}
       onClick={() => setIsDescToggled(!isDescToggled)}
     >
