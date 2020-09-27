@@ -7,12 +7,14 @@ import { RootStateType } from "../../../app/rootReducer";
 import { Chevron } from "../../../components/Chevron/Chevron";
 import { MdEdit, MdDelete, MdDragHandle } from "react-icons/md";
 import { SortableElement, SortableHandle } from "react-sortable-hoc";
+import { TaskForm } from "../TaskForm/TaskForm";
 
 const DragHandle = SortableHandle(() => <MdDragHandle size={24} />);
 
 export const SortableTask = SortableElement(({ task }: { task: TaskType }) => {
   const [isDescToggled, setIsDescToggled] = useState<boolean>(false);
   const chevronDir = isDescToggled ? "up" : "down";
+  const [isFormToggled, setIsFormToggled] = useState<boolean>(false);
 
   const { colors } = useSelector((state: RootStateType) => state.tasks);
   const taskColorObj = colors.find((color) => color.id === task.colorId);
@@ -39,23 +41,28 @@ export const SortableTask = SortableElement(({ task }: { task: TaskType }) => {
     ) : null;
 
   return (
-    <div className={styles.cont} style={{ backgroundColor: taskColor }}>
-      <div className={styles.topBarCont}>
-        <div className={styles.dragBtn}>
-          <DragHandle />
-        </div>
-        <div className={styles.title}>{task.title}</div>
-        <div className={styles.ctrlsCont}>
-          <div>
-            <MdEdit size={24} />
+    <>
+      <div className={styles.cont} style={{ backgroundColor: taskColor }}>
+        <div className={styles.topBarCont}>
+          <div className={styles.dragBtn}>
+            <DragHandle />
           </div>
-          <div onClick={onDelClickHandler}>
-            <MdDelete size={24} />
+          <div className={styles.title}>{task.title}</div>
+          <div className={styles.ctrlsCont}>
+            <div onClick={() => setIsFormToggled(true)}>
+              <MdEdit size={24} />
+            </div>
+            <div onClick={onDelClickHandler}>
+              <MdDelete size={24} />
+            </div>
           </div>
         </div>
+        {descToggleBtn}
+        {desc}
       </div>
-      {descToggleBtn}
-      {desc}
-    </div>
+      {isFormToggled && (
+        <TaskForm task={task} close={() => setIsFormToggled(false)} />
+      )}
+    </>
   );
 });

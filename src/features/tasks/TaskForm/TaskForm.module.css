@@ -1,0 +1,60 @@
+.background {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.formCont {
+  margin: 20px;
+  padding: 20px;
+  width: 100%;
+  max-width: 600px;
+  background-color: #fff;
+}
+
+.topBarCont {
+  display: flex;
+  margin-bottom: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.formTitle {
+  font-size: 20px;
+  flex: 1;
+  text-align: center;
+}
+
+.closeBtn {
+  height: 24px;
+}
+
+.titleField,
+.descField {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.bottomBarCont {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.colorPicker {
+  display: flex;
+}
+
+.colorBox {
+  width: 40px;
+  height: 40px;
+  margin-right: 5px;
+  box-sizing: border-box;
+}

@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { moveTask } from "../tasksSlice";
 import { SortableContainer } from "react-sortable-hoc";
 import { SortableTasksList } from "../SortableTasksList/SortableTasksList";
+import styles from "./Tasks.module.css";
 
 export const Tasks = SortableContainer(() => {
   const dispatch = useDispatch();
@@ -15,5 +16,9 @@ export const Tasks = SortableContainer(() => {
   }) => {
     dispatch(moveTask({ fromIndex: oldIndex, toIndex: newIndex }));
   };
-  return <SortableTasksList onSortEnd={onSortEnd} useDragHandle />;
+  return (
+    <div className={styles.tasksCont}>
+      <SortableTasksList onSortEnd={onSortEnd} useDragHandle />
+    </div>
+  );
 });
