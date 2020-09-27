@@ -1,0 +1,11 @@
+.tasksList {
+  width: 768px;
+  margin: auto;
+}
+
+@media (max-width: 768px) {
+  .tasksList {
+    width: auto;
+    margin: 10%;
+  }
+}
