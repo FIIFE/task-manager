@@ -1,17 +1,16 @@
 import React, { useState } from "react";
-import styles from "./Task.module.css";
+import styles from "./SortableTask.module.css";
 import { TaskType } from "../tasksSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { removeTask } from "../tasksSlice";
 import { RootStateType } from "../../../app/rootReducer";
 import { Chevron } from "../../../components/Chevron/Chevron";
 import { MdEdit, MdDelete, MdDragHandle } from "react-icons/md";
+import { SortableElement, SortableHandle } from "react-sortable-hoc";
 
-interface TaskPropsType {
-  task: TaskType;
-}
+const DragHandle = SortableHandle(() => <MdDragHandle size={24} />);
 
-export const Task: React.FC<TaskPropsType> = ({ task }) => {
+export const SortableTask = SortableElement(({ task }: { task: TaskType }) => {
   const [isDescToggled, setIsDescToggled] = useState<boolean>(false);
   const chevronDir = isDescToggled ? "up" : "down";
 
@@ -43,7 +42,7 @@ export const Task: React.FC<TaskPropsType> = ({ task }) => {
     <div className={styles.cont} style={{ backgroundColor: taskColor }}>
       <div className={styles.topBarCont}>
         <div className={styles.dragBtn}>
-          <MdDragHandle size={24} />
+          <DragHandle />
         </div>
         <div className={styles.title}>{task.title}</div>
         <div className={styles.ctrlsCont}>
@@ -59,4 +58,4 @@ export const Task: React.FC<TaskPropsType> = ({ task }) => {
       {desc}
     </div>
   );
-};
+});

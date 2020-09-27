@@ -1,10 +1,10 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import { Task } from "../Task";
+import { SortableTask } from "../SortableTask";
 import { Provider } from "react-redux";
 import { store } from "../../../../app/store";
 
-describe("<Task />", () => {
+describe("<SortableTask />", () => {
   it("renders toggle button when task has description", () => {
     const task = {
       id: "someid1",
@@ -14,7 +14,7 @@ describe("<Task />", () => {
     };
     render(
       <Provider store={store}>
-        <Task task={task} />
+        <SortableTask task={task} index={0} />
       </Provider>
     );
     expect(screen.queryByTestId("toggle button")).toBeInTheDocument();
