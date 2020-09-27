@@ -25,17 +25,21 @@ const tasksInitialState: TasksStateType = {
     {
       id: "someid1",
       title: "task 1",
-      description: "description 1",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed totam quam animi optio ipsa assumenda unde ab voluptatibus, id, sunt quibusdam expedita, dolorum cum impedit quas tempora voluptas incidunt voluptatem.",
       colorId: "1",
     },
     {
       id: "someid2",
       title: "task 2",
+      colorId: "2",
     },
     {
       id: "someid3",
       title: "task 3",
-      description: "description 3",
+      description:
+        "Sed totam quam animi optio ipsa assumenda unde ab voluptatibus, id, sunt quibusdam expedita, dolorum cum impedit quas tempora voluptas incidunt voluptatem.",
+      colorId: "3",
     },
   ],
   colors: [
